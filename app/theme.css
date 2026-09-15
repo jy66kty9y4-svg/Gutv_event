@@ -1,0 +1,733 @@
+/* Compact interface theme control. Dark stays the baseline; light overrides live here. */
+.theme-switcher {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(138, 199, 255, 0.2);
+  border-radius: 9px;
+  background: rgba(7, 23, 43, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.theme-switcher > button,
+.public-auth-actions .theme-switcher > button,
+.studio-header-actions .theme-switcher > button {
+  display: grid;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  min-height: 26px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  color: rgba(226, 241, 255, 0.62);
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.theme-switcher > button:hover {
+  color: #ffffff;
+  background: rgba(80, 166, 255, 0.12);
+}
+
+.theme-switcher > button:active {
+  transform: translateY(1px);
+}
+
+.theme-switcher > button[aria-pressed="true"] {
+  color: #dff5ff;
+  background: rgba(43, 136, 238, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(91, 180, 255, 0.24);
+}
+
+/* The bootstrap script sets the persisted mode on <html> before hydration. */
+html[data-theme-mode] .theme-switcher > button[aria-pressed="true"] {
+  color: rgba(226, 241, 255, 0.62);
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-theme-mode="light"] .theme-switcher > button[data-theme-choice="light"],
+html[data-theme-mode="dark"] .theme-switcher > button[data-theme-choice="dark"],
+html[data-theme-mode="auto"] .theme-switcher > button[data-theme-choice="auto"] {
+  color: #dff5ff;
+  background: rgba(43, 136, 238, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(91, 180, 255, 0.24);
+}
+
+.theme-switcher > button:focus-visible {
+  outline: 2px solid #65baff;
+  outline-offset: 1px;
+}
+
+.theme-switcher svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.auth-theme-switcher {
+  position: absolute;
+  top: 21px;
+  right: 64px;
+  z-index: 3;
+}
+
+.auth-dialog .auth-brand {
+  padding-right: 116px;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --void: #eef4fa;
+  --space: #ffffff;
+  --panel: #ffffff;
+  --bright: #e4eef8;
+  --line: #c5d4e3;
+  --blue: #1269cf;
+  --ice: #075fa8;
+  --white: #14263d;
+  --muted: #61758e;
+}
+
+html[data-theme="light"] body,
+html[data-theme="light"] .public-site,
+html[data-theme="light"] .portal-app {
+  color: #14263d;
+  background: #eef4fa;
+}
+
+html[data-theme="light"] .theme-switcher {
+  border-color: #c7d6e5;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 22px rgba(29, 67, 105, 0.08), inset 0 1px 0 #ffffff;
+}
+
+html[data-theme="light"] .theme-switcher > button,
+html[data-theme="light"] .public-auth-actions .theme-switcher > button,
+html[data-theme="light"] .studio-header-actions .theme-switcher > button {
+  color: #70839a;
+  background: transparent;
+}
+
+html[data-theme="light"] .theme-switcher > button:hover {
+  color: #1269cf;
+  background: #edf5fd;
+}
+
+html[data-theme="light"] .theme-switcher > button[aria-pressed="true"] {
+  color: #075fa8;
+  background: #dcecff;
+  box-shadow: inset 0 0 0 1px #bbd9f8;
+}
+
+html[data-theme="light"][data-theme-mode] .theme-switcher > button[aria-pressed="true"] {
+  color: #70839a;
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-theme="light"][data-theme-mode="light"] .theme-switcher > button[data-theme-choice="light"],
+html[data-theme="light"][data-theme-mode="dark"] .theme-switcher > button[data-theme-choice="dark"],
+html[data-theme="light"][data-theme-mode="auto"] .theme-switcher > button[data-theme-choice="auto"] {
+  color: #075fa8;
+  background: #dcecff;
+  box-shadow: inset 0 0 0 1px #bbd9f8;
+}
+
+html[data-theme="light"] .public-header,
+html[data-theme="light"] .studio-header,
+html[data-theme="light"] .portal-topbar {
+  border-color: rgba(120, 148, 177, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 30px rgba(30, 65, 99, 0.06);
+}
+
+html[data-theme="light"] .public-brand b,
+html[data-theme="light"] .studio-brand b,
+html[data-theme="light"] .public-nav a:hover,
+html[data-theme="light"] .public-nav a.active,
+html[data-theme="light"] .studio-nav a:hover,
+html[data-theme="light"] .studio-nav a.active,
+html[data-theme="light"] .portal-page-title h1,
+html[data-theme="light"] .portal-panel h2,
+html[data-theme="light"] .portal-panel h3 {
+  color: #14263d;
+}
+
+html[data-theme="light"] .public-brand span,
+html[data-theme="light"] .studio-brand span,
+html[data-theme="light"] .public-nav a,
+html[data-theme="light"] .studio-nav a,
+html[data-theme="light"] .portal-topbar p,
+html[data-theme="light"] .portal-page-title p {
+  color: #61758e;
+}
+
+html[data-theme="light"] .public-hero {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(34, 128, 220, 0.13), transparent 32%),
+    linear-gradient(180deg, #f7fbff 0%, #eef4fa 100%);
+}
+
+html[data-theme="light"] .public-hero::before,
+html[data-theme="light"] .public-site::before {
+  opacity: 0.32;
+}
+
+html[data-theme="light"] .public-hero-copy h1,
+html[data-theme="light"] .public-section-head h2,
+html[data-theme="light"] .public-about h2,
+html[data-theme="light"] .request-form h2,
+html[data-theme="light"] .auth-dialog h2,
+html[data-theme="light"] .auth-dialog h3 {
+  color: #10243c;
+}
+
+html[data-theme="light"] .public-hero-copy p,
+html[data-theme="light"] .public-section-head p,
+html[data-theme="light"] .public-about p,
+html[data-theme="light"] .request-form p,
+html[data-theme="light"] .auth-dialog p {
+  color: #61758e;
+}
+
+html[data-theme="light"] .public-section-label h1,
+html[data-theme="light"] .public-section-label b,
+html[data-theme="light"] .public-direction-grid h2,
+html[data-theme="light"] .public-direction-grid h3,
+html[data-theme="light"] .public-request h2,
+html[data-theme="light"] .public-request-flow strong {
+  color: #14263d;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .public-section-label,
+html[data-theme="light"] .public-direction-grid article > span,
+html[data-theme="light"] .public-request-code,
+html[data-theme="light"] .public-request-flow li > b {
+  color: #1269cf;
+}
+
+html[data-theme="light"] .public-hero-actions > a,
+html[data-theme="light"] .public-direction-grid p,
+html[data-theme="light"] .public-request-flow li small,
+html[data-theme="light"] .public-footer p,
+html[data-theme="light"] .public-footer > span {
+  color: #526a82;
+}
+
+html[data-theme="light"] .public-about-note {
+  color: #eef7ff;
+  border-color: #2b70b4;
+  background: linear-gradient(145deg, #12365f, #0b2442);
+}
+
+html[data-theme="light"] .public-about-note p {
+  color: #dbeaf7;
+}
+
+html[data-theme="light"] .public-about-note span {
+  color: #83ccff;
+}
+
+html[data-theme="light"] .public-about,
+html[data-theme="light"] .public-directions,
+html[data-theme="light"] .public-request,
+html[data-theme="light"] .public-request-panel,
+html[data-theme="light"] .public-direction-card,
+html[data-theme="light"] .public-feature,
+html[data-theme="light"] .public-process-card,
+html[data-theme="light"] .public-status-card,
+html[data-theme="light"] .request-form,
+html[data-theme="light"] .portal-panel,
+html[data-theme="light"] .portal-form-panel,
+html[data-theme="light"] .portal-kpi,
+html[data-theme="light"] .portal-kpis article:not(.primary),
+html[data-theme="light"] .portal-table-wrap,
+html[data-theme="light"] .request-history-card,
+html[data-theme="light"] .request-detail,
+html[data-theme="light"] .portal-drawer,
+html[data-theme="light"] .profile-card {
+  color: #14263d;
+  border-color: #cbd8e5;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(31, 69, 106, 0.07);
+}
+
+html[data-theme="light"] .public-direction-card p,
+html[data-theme="light"] .public-feature p,
+html[data-theme="light"] .public-process-card p,
+html[data-theme="light"] .public-status-card p,
+html[data-theme="light"] .portal-panel p,
+html[data-theme="light"] .request-history-card p,
+html[data-theme="light"] .request-detail p,
+html[data-theme="light"] .profile-card p {
+  color: #61758e;
+}
+
+html[data-theme="light"] .auth-backdrop {
+  background: rgba(18, 40, 65, 0.34);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme="light"] .auth-dialog {
+  color: #14263d;
+  border-color: #c8d7e6;
+  background: #ffffff;
+  box-shadow: 0 30px 90px rgba(21, 48, 76, 0.24);
+}
+
+html[data-theme="light"] .auth-close {
+  color: #5f738b;
+  border-color: #c8d7e6;
+  background: #f4f8fc;
+}
+
+html[data-theme="light"] .auth-error,
+html[data-theme="light"] .portal-form-submit p.error {
+  color: #a32945;
+  border-color: #df7890;
+  background: #fff0f3;
+}
+
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select {
+  color: #14263d;
+  border-color: #bdcedf;
+  background: #ffffff;
+  color-scheme: light;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #8294a7;
+}
+
+html[data-theme="light"] input:focus,
+html[data-theme="light"] textarea:focus,
+html[data-theme="light"] select:focus {
+  border-color: #2b7fd4;
+  box-shadow: 0 0 0 3px rgba(30, 116, 202, 0.12);
+}
+
+html[data-theme="light"] .portal-main,
+html[data-theme="light"] .portal-content {
+  background: #eef4fa;
+}
+
+html[data-theme="light"] .portal-table th {
+  color: #4f6882;
+  border-color: #d2deea;
+  background: #edf4fb;
+}
+
+html[data-theme="light"] .portal-table td,
+html[data-theme="light"] .portal-table tr,
+html[data-theme="light"] .portal-list-row {
+  color: #223952;
+  border-color: #d8e2ec;
+}
+
+html[data-theme="light"] .portal-table tr:hover td,
+html[data-theme="light"] .portal-list-row:hover {
+  background: #f2f7fc;
+}
+
+/* Portal typography and nested surfaces must switch with the canvas, too. */
+html[data-theme="light"] .portal-workspace :is(h1, h2, h3, h4, legend),
+html[data-theme="light"] .portal-event-list strong,
+html[data-theme="light"] .portal-specialty-grid b,
+html[data-theme="light"] .portal-table-wrap td b,
+html[data-theme="light"] .portal-detail-grid article > b,
+html[data-theme="light"] .management-registration-list b,
+html[data-theme="light"] .management-org-list h3,
+html[data-theme="light"] .management-specialty-list > div > b,
+html[data-theme="light"] .management-assignment-list > div > b,
+html[data-theme="light"] .organization-info b {
+  color: #14263d;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .portal-workspace :is(p, small),
+html[data-theme="light"] .portal-event-list time,
+html[data-theme="light"] .portal-process-list > div,
+html[data-theme="light"] .portal-field-help,
+html[data-theme="light"] .portal-form-submit p,
+html[data-theme="light"] .management-review p {
+  color: #5d7289;
+}
+
+html[data-theme="light"] .portal-form-grid label > span,
+html[data-theme="light"] .portal-stack-label > span,
+html[data-theme="light"] .management-add-specialty label > span,
+html[data-theme="light"] .organization-form label > span,
+html[data-theme="light"] .management-assignment-list label > span,
+html[data-theme="light"] .portal-detail-grid article > span,
+html[data-theme="light"] .organization-info small {
+  color: #526a82;
+}
+
+html[data-theme="light"] .portal-kpis article.primary {
+  color: #ffffff;
+  border-color: #5aa3e8;
+  background: linear-gradient(118deg, #0d5eb4, #1b7ed4);
+}
+
+html[data-theme="light"] .portal-kpis article.primary :is(strong, span, p, small, button) {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .portal-primary,
+html[data-theme="light"] .portal-submit,
+html[data-theme="light"] .management-add-specialty button {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .portal-search,
+html[data-theme="light"] .portal-specialty-grid > label,
+html[data-theme="light"] .portal-detail-grid article,
+html[data-theme="light"] .management-add-specialty,
+html[data-theme="light"] .management-assignment-list > div,
+html[data-theme="light"] .management-review,
+html[data-theme="light"] .organization-info > span {
+  color: #20364e;
+  border-color: #c8d6e4;
+  background: #f7fafd;
+}
+
+html[data-theme="light"] .portal-specialty-grid > label.selected,
+html[data-theme="light"] .portal-detail-grid article.accent {
+  color: #153d68;
+  border-color: #7fb2e4;
+  background: #e3f0fc;
+}
+
+html[data-theme="light"] .portal-detail-grid article.warning {
+  background: #fff0f3;
+}
+
+html[data-theme="light"] .portal-table-wrap tr,
+html[data-theme="light"] .portal-table-wrap td {
+  color: #2b4158;
+  border-color: #d7e2ec;
+  background: #ffffff;
+}
+
+html[data-theme="light"] .portal-table-wrap tbody tr:hover td {
+  background: #f0f6fc;
+}
+
+html[data-theme="light"] .studio-site {
+  --studio-ink: #f0f5fa;
+  --studio-panel: #ffffff;
+  --studio-panel-2: #eaf2f9;
+  --studio-blue: #1269cf;
+  --studio-coral: #dc4662;
+  --studio-ice: #14263d;
+  --studio-muted: #61758e;
+  --studio-line: #c9d7e5;
+  color: #14263d;
+  background: #eef4fa;
+}
+
+html[data-theme="light"] .studio-front,
+html[data-theme="light"] .studio-projects,
+html[data-theme="light"] .studio-inner-page,
+html[data-theme="light"] .studio-tab-page {
+  background: #eef4fa;
+}
+
+html[data-theme="light"] .studio-request-link,
+html[data-theme="light"] .studio-account-link,
+html[data-theme="light"] .studio-register-link {
+  color: #ffffff;
+}
+
+/* Every editorial text role gets an explicit light-theme ink. */
+html[data-theme="light"] .studio-site :is(h1, h2, h3, h4),
+html[data-theme="light"] .studio-legacy-about .public-about-copy h1,
+html[data-theme="light"] .simple-page-title h1,
+html[data-theme="light"] .studio-inner-title h1,
+html[data-theme="light"] .studio-section-heading :is(h1, h2),
+html[data-theme="light"] .studio-index-heading h2,
+html[data-theme="light"] .studio-materials-lead h2,
+html[data-theme="light"] .studio-about-set h2 {
+  color: #14263d;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .studio-site :is(p, li),
+html[data-theme="light"] .studio-section-heading > p,
+html[data-theme="light"] .studio-inner-title p,
+html[data-theme="light"] .studio-lead-copy p,
+html[data-theme="light"] .studio-rundown-item p,
+html[data-theme="light"] .vk-project-copy p,
+html[data-theme="light"] .materials-note p,
+html[data-theme="light"] .studio-materials-lead p,
+html[data-theme="light"] .studio-index-list p,
+html[data-theme="light"] .studio-learning-section > div p,
+html[data-theme="light"] .studio-team-grid p,
+html[data-theme="light"] .studio-about-set p {
+  color: #526a82;
+}
+
+html[data-theme="light"] .studio-section-heading > div,
+html[data-theme="light"] .studio-eyebrow,
+html[data-theme="light"] .studio-latest-projects-head > div > span,
+html[data-theme="light"] .studio-inside-copy > div,
+html[data-theme="light"] .studio-inner-title > div,
+html[data-theme="light"] .studio-index-heading > span,
+html[data-theme="light"] .studio-learning-section > div > span,
+html[data-theme="light"] .studio-about-set > div > span,
+html[data-theme="light"] .simple-page-title > div > span,
+html[data-theme="light"] .home-leadership-head > div:first-child > span {
+  color: #1269cf;
+}
+
+html[data-theme="light"] .studio-latest-projects .vk-project-copy time {
+  color: #356c9c;
+}
+
+html[data-theme="light"] .studio-about-title h1 {
+  color: #17314d;
+  -webkit-text-stroke: 0;
+}
+
+html[data-theme="light"] .studio-lead-story,
+html[data-theme="light"] .studio-rundown,
+html[data-theme="light"] .studio-inside,
+html[data-theme="light"] .studio-materials-lead > div,
+html[data-theme="light"] .studio-archive-highlights article,
+html[data-theme="light"] .studio-format-grid article,
+html[data-theme="light"] .studio-team-grid article,
+html[data-theme="light"] .studio-about-set > div:last-child,
+html[data-theme="light"] .home-leadership-card,
+html[data-theme="light"] .home-leadership-controls button,
+html[data-theme="light"] .vk-project-card {
+  border-color: #c9d7e5;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(31, 69, 106, 0.07);
+}
+
+html[data-theme="light"] .home-leadership-controls button,
+html[data-theme="light"] .studio-project-controls button {
+  color: #173b60;
+}
+
+html[data-theme="light"] .studio-legacy-about .public-about-note {
+  color: #eef7ff;
+  border-color: #2b70b4;
+  background: linear-gradient(145deg, #12365f, #0b2442);
+}
+
+html[data-theme="light"] .studio-legacy-about .public-about-note :is(p, span) {
+  color: #dbeaf7;
+}
+
+html[data-theme="light"] .studio-rundown-head,
+html[data-theme="light"] .studio-index-list,
+html[data-theme="light"] .studio-learning-section ol,
+html[data-theme="light"] .studio-team-grid,
+html[data-theme="light"] .studio-archive-highlights > div,
+html[data-theme="light"] .studio-format-grid,
+html[data-theme="light"] .materials-note,
+html[data-theme="light"] .simple-page-title,
+html[data-theme="light"] .studio-inner-title {
+  border-color: #c9d7e5;
+}
+
+html[data-theme="light"] .studio-rundown-item,
+html[data-theme="light"] .studio-index-list > a,
+html[data-theme="light"] .studio-learning-section li,
+html[data-theme="light"] .studio-team-grid article,
+html[data-theme="light"] .studio-archive-highlights article,
+html[data-theme="light"] .studio-format-grid article {
+  border-color: #d3dee9;
+}
+
+html[data-theme="light"] .studio-rundown-item:hover,
+html[data-theme="light"] .studio-index-list > a:hover {
+  background: #edf4fb;
+}
+
+html[data-theme="light"] .studio-lead-copy > b,
+html[data-theme="light"] .studio-rundown-head a,
+html[data-theme="light"] .studio-inside-copy > a,
+html[data-theme="light"] .studio-materials-lead > div > a,
+html[data-theme="light"] .studio-channel-links a,
+html[data-theme="light"] .vk-project-open,
+html[data-theme="light"] .materials-note a,
+html[data-theme="light"] .studio-archive-highlights > a {
+  color: #075fa8;
+}
+
+/* Image cards and the blue request band deliberately remain dark/blue. */
+html[data-theme="light"] .home-leadership-track article :is(h2, h3, h4),
+html[data-theme="light"] .studio-project-card :is(h2, h3, h4),
+html[data-theme="light"] .studio-request-panel :is(h1, h2, h3, h4) {
+  color: #ffffff;
+  text-shadow: 0 2px 22px rgba(2, 5, 13, 0.55);
+}
+
+html[data-theme="light"] .home-leadership-track article p,
+html[data-theme="light"] .studio-project-card p,
+html[data-theme="light"] .studio-request-panel p {
+  color: #dceaf7;
+}
+
+html[data-theme="light"] .home-leadership-track article small,
+html[data-theme="light"] .studio-project-card small,
+html[data-theme="light"] .studio-project-card b,
+html[data-theme="light"] .studio-request-panel > div:first-child > span {
+  color: #c8e6ff;
+}
+
+html[data-theme="light"] .studio-project-card-light :is(h2, h3, h4),
+html[data-theme="light"] .studio-project-card-light p,
+html[data-theme="light"] .studio-project-card-light b {
+  color: #10243c;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .studio-image-credit,
+html[data-theme="light"] .studio-inside-image > span,
+html[data-theme="light"] .studio-materials-lead-image > span,
+html[data-theme="light"] .vk-project-media :is(.vk-project-number, .vk-project-source) {
+  color: #e8f4ff;
+}
+
+html[data-theme="light"] .studio-role-tape,
+html[data-theme="light"] .studio-request-panel,
+html[data-theme="light"] .studio-request-panel button,
+html[data-theme="light"] .studio-request-panel > div:last-child > a {
+  color: #ffffff;
+}
+
+html[data-theme="light"] .auth-brand b,
+html[data-theme="light"] .auth-dialog label > span {
+  color: #334d67;
+}
+
+html[data-theme="light"] .auth-brand small,
+html[data-theme="light"] .auth-copy > span {
+  color: #1269cf;
+}
+
+html[data-theme="light"] .studio-footer,
+html[data-theme="light"] .public-footer {
+  color: #526a82;
+  border-color: #ccd9e6;
+  background: #e6eef6;
+}
+
+/* Studio surfaces that otherwise inherit the dark editorial baseline. */
+html[data-theme="light"] .studio-service-line {
+  border-color: #c9d9e8;
+  background: #f7fbff;
+  color: #5d748c;
+}
+
+html[data-theme="light"] .studio-service-line span:first-child,
+html[data-theme="light"] .studio-service-line a {
+  color: #356c9c;
+}
+
+html[data-theme="light"] .public-section-label span {
+  border-color: #b7d1e8;
+  background: #eaf4fc;
+  color: #356c9c;
+}
+
+html[data-theme="light"] .studio-legacy-about .public-about-note {
+  color: #173b60;
+  border-color: #b8d3e9;
+  background: #eaf4fc;
+  box-shadow: inset 3px 0 #2b79bb;
+}
+
+html[data-theme="light"] .studio-legacy-about .public-about-note :is(p, span) {
+  color: #294d70;
+}
+
+html[data-theme="light"] .studio-account-link {
+  border-color: #c2d5e6;
+  background: #f7fbff;
+  color: #1d547f;
+}
+
+html[data-theme="light"] .studio-account-link:hover {
+  border-color: #85b8df;
+  background: #eaf4fc;
+  color: #075fa8;
+}
+
+html[data-theme="light"] .studio-register-link {
+  border-color: #1269cf;
+  background: #1269cf;
+  color: #ffffff;
+}
+
+html[data-theme="light"] .studio-register-link:hover {
+  border-color: #075fa8;
+  background: #075fa8;
+}
+
+html[data-theme="light"] .studio-request-panel button,
+html[data-theme="light"] .studio-request-panel > div:last-child > a {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #075fa8;
+}
+
+html[data-theme="light"] .studio-request-panel button:hover,
+html[data-theme="light"] .studio-request-panel > div:last-child > a:hover {
+  background: #eaf4fc;
+}
+
+html[data-theme="light"] .studio-request-panel button span,
+html[data-theme="light"] .studio-request-panel > div:last-child > a span {
+  background: #e1f0ff;
+  color: #075fa8;
+}
+
+html[data-theme="light"] .studio-directions-page,
+html[data-theme="light"] .studio-directions-page .studio-tab-content,
+html[data-theme="light"] .studio-directions-page .studio-inner-page {
+  background: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .theme-switcher {
+    padding: 2px;
+  }
+
+  .theme-switcher > button,
+  .public-auth-actions .theme-switcher > button,
+  .studio-header-actions .theme-switcher > button {
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    min-height: 25px;
+  }
+
+  .auth-theme-switcher {
+    top: 18px;
+    right: 58px;
+  }
+
+  .auth-dialog .auth-brand {
+    padding-right: 108px;
+  }
+}

@@ -1,0 +1,16 @@
+Unbounded variable font
+Designer: NaN
+Weights: 200–900
+Scripts: Cyrillic, Cyrillic Extended, Latin, Latin Extended, Vietnamese
+
+Downloaded 2026-09-06 from the official Google Fonts repository:
+https://github.com/google/fonts/tree/main/ofl/unbounded
+https://raw.githubusercontent.com/google/fonts/main/ofl/unbounded/Unbounded%5Bwght%5D.ttf
+
+Upstream repository:
+https://github.com/googlefonts/unbounded
+Upstream commit recorded by Google Fonts metadata:
+f3ec43228a864a72487e41552e2140efab9884ea
+
+License: SIL Open Font License 1.1 (see Unbounded-OFL.txt).
+The font binary is unmodified; only its local filename has changed.

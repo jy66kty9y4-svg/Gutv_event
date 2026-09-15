@@ -1,0 +1,27 @@
+# Source control and local editor state
+.git
+.gitignore
+.DS_Store
+
+# Dependency and build outputs are created inside the image.
+node_modules
+.next
+dist
+.pnpm-store
+.wrangler
+.vinext
+outputs
+__pycache__
+
+# Never send local configuration or persistent finance data to the build context.
+.env
+.env.*
+.dev.vars
+!.env.example
+data
+*.sqlite
+*.sqlite-*
+
+# Deployment configuration is consumed by Compose/Caddy on the host, not the app image.
+deploy
+knowledge

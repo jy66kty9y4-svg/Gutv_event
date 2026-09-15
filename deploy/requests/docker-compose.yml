@@ -1,0 +1,43 @@
+services:
+  gutv-requests:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: ${GUTV_REQUESTS_IMAGE:-gutv-requests:local}
+    restart: unless-stopped
+    environment:
+      GUTV_DATABASE_PATH: /data/requests.sqlite
+      GUTV_UPLOAD_PATH: /data/uploads
+      GUTV_PASSWORD_RECORD: ${GUTV_PASSWORD_RECORD:-}
+      GUTV_SESSION_SECRET: ${GUTV_SESSION_SECRET:-}
+      # One immutable cutoff for accepting legacy v2 stateless cookies. New v3
+      # sessions are persisted and can be revoked individually.
+      GUTV_SESSION_V2_CUTOFF_AT: ${GUTV_SESSION_V2_CUTOFF_AT:-}
+      ORBIT_GUTV_HMAC_SECRET: ${ORBIT_GUTV_HMAC_SECRET:-}
+      GUTV_ADMIN_USERNAME: ${GUTV_ADMIN_USERNAME:-studio}
+      GUTV_TELEGRAM_BOT_TOKEN: ${GUTV_TELEGRAM_BOT_TOKEN:-}
+      GUTV_TELEGRAM_ADMIN_CHAT_ID: ${GUTV_TELEGRAM_ADMIN_CHAT_ID:-}
+      GUTV_VK_GROUP_ID: ${GUTV_VK_GROUP_ID:-30973272}
+      GUTV_VK_CONFIRMATION_CODE: ${GUTV_VK_CONFIRMATION_CODE:-}
+    volumes:
+      - gutv-requests-data:/data
+    expose:
+      - "3000"
+    networks:
+      cloud_proxy:
+        aliases:
+          - gutv-requests
+      orbitpanel_gutv_control:
+        aliases:
+          - gutv-portal-control
+
+networks:
+  cloud_proxy:
+    external: true
+    name: ptitsa-plus-cloud_proxy
+  orbitpanel_gutv_control:
+    external: true
+    name: orbitpanel_gutv_control
+
+volumes:
+  gutv-requests-data:

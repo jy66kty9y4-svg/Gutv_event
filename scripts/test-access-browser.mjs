@@ -1,0 +1,76 @@
+import assert from 'node:assert/strict';
+import { mkdir } from 'node:fs/promises';
+const { chromium } = await import(process.env.GUTV_PLAYWRIGHT_MODULE || 'playwright');
+export async function runBrowserChecks({ base, adminCookie, memberCookie, output }) {
+  await mkdir(output, { recursive: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.GUTV_CHROMIUM_EXECUTABLE ? { executablePath: process.env.GUTV_CHROMIUM_EXECUTABLE } : {}) });
+  const errors = [];
+  async function context(cookie) {
+    const c = await browser.newContext({ viewport: { width: 1440, height: 1024 } });
+    await c.addCookies([{ name: 'gutv_session', value: cookie.slice('gutv_session='.length), url: base }]);
+    const p = await c.newPage(); p.setDefaultTimeout(10000); p.on('pageerror', e => errors.push(e.message)); p.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+    return { c, p };
+  }
+  try {
+    const { c, p } = await context(adminCookie);
+    await p.goto(base + '/management#access'); await p.waitForLoadState('networkidle');
+    console.log('Browser sections:', await p.getByRole('navigation', { name: 'Разделы управления' }).innerText());
+    console.log('Access controls:', await p.locator('main').getByRole('button').allTextContents());
+    await p.getByRole('button', { name: /^Роли \d/ }).click();
+    await p.getByRole('button', { name: '+ Создать роль', exact: true }).click();
+    assert.equal(await p.getByLabel('Название роли', { exact: true }).getAttribute('maxlength'), '80');
+    assert.equal(await p.getByLabel('Описание', { exact: true }).getAttribute('maxlength'), '500');
+    await p.getByLabel('Название роли', { exact: true }).fill('Тестовая редакция');
+    await p.getByLabel('Описание', { exact: true }).fill('Настройка через браузер');
+    await p.getByRole('checkbox', { name: /^Вход в панель руководства/ }).check();
+    await p.getByRole('checkbox', { name: /^Проекты/ }).check();
+    await p.getByRole('button', { name: 'Сохранить роль', exact: true }).click();
+    await p.getByRole('status').filter({ hasText: 'Роль сохранена' }).waitFor();
+    await p.getByRole('button', { name: /^Тестовая редакция/ }).click();
+    assert.equal(await p.getByRole('checkbox', { checked: true }).count(), 2);
+    await p.getByLabel('Название роли', { exact: true }).fill('Медиа-команда');
+    await p.getByRole('button', { name: 'Сохранить роль', exact: true }).click();
+    await p.getByRole('status').filter({ hasText: 'Роль сохранена' }).waitFor();
+    await p.getByRole('button', { name: /^Пользователи \d/ }).click();
+    assert.equal(await p.getByLabel('Поиск пользователя').getAttribute('maxlength'), '200');
+    await p.getByLabel('Поиск пользователя').fill('member-one');
+    await p.getByRole('button', { name: /^Тестовый сотрудник/ }).click();
+    await p.getByRole('checkbox', { name: /^Медиа-команда/ }).check();
+    await p.getByRole('button', { name: 'Сохранить роли пользователя' }).click();
+    await p.getByRole('status').filter({ hasText: 'Роли пользователя сохранены' }).waitFor();
+    await p.getByRole('button', { name: /^Тестовый сотрудник/ }).click();
+    assert.equal(await p.getByRole('checkbox', { name: /^Медиа-команда/ }).isChecked(), true);
+    await p.screenshot({ path: output + '/access-users-desktop.png', fullPage: true });
+    const member = await context(memberCookie);
+    await member.p.goto(base + '/management'); await member.p.waitForLoadState('networkidle');
+    const nav = member.p.getByRole('navigation', { name: 'Разделы управления' });
+    assert.deepEqual(await nav.getByRole('button').allTextContents(), ['Обзор', 'Наши проекты']);
+    await member.p.goto(base + '/management#access'); await member.p.waitForLoadState('networkidle');
+    assert.equal(await member.p.getByRole('heading', { name: 'Роли и пользователи' }).count(), 0);
+    await p.getByRole('checkbox', { name: /^Медиа-команда/ }).uncheck();
+    await p.getByRole('button', { name: 'Сохранить роли пользователя' }).click();
+    await p.getByRole('status').filter({ hasText: 'Роли пользователя сохранены' }).waitFor();
+    await member.p.reload(); await member.p.waitForLoadState('networkidle');
+    assert.deepEqual(await nav.getByRole('button').allTextContents(), ['Обзор']);
+    await member.p.getByRole('link', { name: 'Мои заявки' }).click(); await member.p.waitForURL('**/cabinet'); await member.p.waitForLoadState('networkidle');
+    assert.ok(member.p.url().includes('/cabinet'));
+    await p.getByRole('button', { name: /^Роли \d/ }).click();
+    await p.getByRole('button', { name: /^Администратор/ }).click();
+    assert.equal(await p.getByRole('checkbox', { disabled: true, checked: true }).count(), 7);
+    await p.screenshot({ path: output + '/access-roles-desktop.png', fullPage: true });
+    await p.setViewportSize({ width: 390, height: 844 });
+    await p.getByRole('button', { name: /^Бухгалтер/ }).click();
+    await p.getByLabel('Название роли').scrollIntoViewIfNeeded();
+    assert.equal(await p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, 'No mobile overflow');
+    await p.screenshot({ path: output + '/access-roles-mobile.png', fullPage: true });
+    const accessNav = p.getByRole('navigation', { name: 'Разделы управления' }).getByRole('button', { name: 'Роли и доступ', exact: true });
+    await accessNav.scrollIntoViewIfNeeded(); await accessNav.click();
+    assert.equal(await accessNav.getAttribute('aria-current'), 'page');
+    await p.getByRole('button', { name: 'Тёмная тема', exact: true }).click();
+    assert.equal(await p.getByRole('button', { name: 'Тёмная тема', exact: true }).getAttribute('aria-pressed'), 'true');
+    await p.screenshot({ path: output + '/access-roles-mobile-dark.png', fullPage: true });
+    await c.close(); await member.c.close();
+    assert.deepEqual(errors, [], 'No browser console errors');
+    console.log('PASS browser: create/rename role, assign/revoke user roles, persisted checkboxes, restricted nav and direct hash, own cabinet, protected administrator, 390px mobile');
+  } finally { await browser.close(); }
+}

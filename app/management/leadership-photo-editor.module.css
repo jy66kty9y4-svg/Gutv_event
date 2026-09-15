@@ -1,0 +1,16 @@
+.editor { display: grid; gap: 12px; min-width: 0; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; }
+.heading button { padding: 4px 0; border: 0; background: transparent; color: var(--mg-accent); font: inherit; cursor: pointer; }
+.preview { width: min(100%, 320px); margin-inline: auto; position: relative; overflow: hidden; border-radius: 12px; background: var(--mg-panel); touch-action: none; cursor: grab; user-select: none; }
+.preview:focus-visible { outline: 3px solid var(--mg-accent); outline-offset: 3px; }
+.dragging { cursor: grabbing; }
+.help { margin: 0; color: var(--mg-muted); font-size: 12px; line-height: 1.5; }
+.controls { display: grid; gap: 10px; }
+.control { display: grid; grid-template-columns: 115px minmax(0,1fr) 77px; align-items: center; gap: 10px; }
+.control label { font-size: 12px; }
+.control input[type='range'] { width: 100%; min-width: 0; height: 24px; margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; accent-color: var(--mg-accent); cursor: pointer; }
+.control > span { display: flex; align-items: center; gap: 4px; color: var(--mg-muted); font-size: 12px; }
+.control input[type='number'] { width: 60px; height: 34px; padding: 5px; font-size: 12px; }
+@media (max-width: 560px) {
+  .control { grid-template-columns: 100px minmax(0,1fr) 77px; gap: 6px; }
+}

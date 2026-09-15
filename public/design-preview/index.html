@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#292e6b">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ГУТВ — новый дизайн</title>
+  <link rel="icon" href="assets/logo-original.webp">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="brand-filters" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="logo-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .1608 0 0 0 0 .1804 0 0 0 0 .4196 .2126 .7152 .0722 0 0"/></filter>
+      <filter id="logo-light" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .8275 0 0 0 0 .9294 0 0 0 0 .9647 .2126 .7152 .0722 0 0"/></filter>
+    </defs>
+  </svg>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+  <div class="site-shell">
+    <div id="service-line" class="service-line" hidden><span>ГУТВ · Эфир университета</span><span>РГУ нефти и газа (НИУ) имени И.М. Губкина</span><div><a href="https://t.me/gutv_official" target="_blank" rel="noreferrer">Telegram ↗</a><a href="https://vk.ru/gutv_official" target="_blank" rel="noreferrer">VK ↗</a></div></div>
+    <header class="header">
+      <a class="brand" href="#home" aria-label="ГУТВ — на главную">
+        <span class="brand-mark"><img src="assets/logo-original.webp" alt="Логотип ГУТВ"></span>
+        <span class="brand-copy">Студенческое<br>телевидение</span>
+      </a>
+      <nav class="navigation" aria-label="Основная навигация">
+        <a href="#home" data-nav="home" aria-current="page">Главная</a>
+        <a href="#studio" data-nav="studio">О студии</a>
+        <a href="#directions" data-nav="directions">Направления</a>
+      </nav>
+      <div class="header-actions">
+        <div class="themes" role="group" aria-label="Тема интерфейса">
+          <button type="button" data-theme-choice="light" aria-label="Светлая тема" title="Светлая тема" aria-pressed="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/></svg></button>
+          <button type="button" data-theme-choice="dark" aria-label="Тёмная тема" title="Тёмная тема" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M20.5 14.1A8.8 8.8 0 0 1 9.9 3.5a8.8 8.8 0 1 0 10.6 10.6Z"/></svg></button>
+          <button type="button" data-theme-choice="auto" aria-label="Как на устройстве" title="Как на устройстве" aria-pressed="false"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8m-4-4v4"/></svg></button>
+        </div>
+        <button class="login-link" type="button" data-dialog="login">Войти <span aria-hidden="true">↗</span></button>
+        <button class="register-button" type="button" data-dialog="register">Регистрация</button>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div id="home" class="page home-page">
+        <section class="hero" aria-labelledby="hero-title">
+          <svg class="hero-ribbons" viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true"><path d="M-180 700C270 755 752 357 1600 95C859 369 339 900-180 700Z"/><path d="M-155 745C458 822 918 486 1530 420C958 528 365 958-155 745Z"/></svg>
+          <span class="pixel plus p1" aria-hidden="true"></span><span class="pixel square p2" aria-hidden="true"></span><span class="pixel plus p3" aria-hidden="true"></span><span class="pixel square p4" aria-hidden="true"></span>
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="tiny-cross" aria-hidden="true"></span>ГУТВ · Эфир университета</p>
+            <h1 id="hero-title">Событие<br><span class="title-line">в кадре<span class="title-dot">.</span></span></h1>
+            <p class="hero-description">Расскажите нам о мероприятии — мы соберём команду, подготовим технику и поможем сохранить главное.</p>
+            <div class="hero-actions">
+              <button class="button primary" type="button" data-dialog="request"><span>Оставить заявку на съёмку</span><span class="arrow" aria-hidden="true">↗</span></button>
+              <a class="text-link" href="#studio">Познакомиться со студией <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <span class="visual-cross" aria-hidden="true"></span>
+            <div class="camera-image"><img src="assets/camera.webp" alt="Монитор съёмочной камеры с эфирной заставкой ГУТВ" width="1536" height="1024"></div>
+            <div class="visual-caption"><span class="caption-line"></span><span>Видим. Слышим. Показываем.</span><span class="tiny-cross" aria-hidden="true"></span></div>
+          </div>
+        </section>
+        <div class="home-bottom" aria-hidden="true"><span>Студенческое телевидение Губкинского университета</span><div class="bottom-pixels"><i></i><i></i><i></i><i></i></div><span>ГУТВ <b>+</b></span></div>
+      </div>
+
+      <div id="studio" class="page inner-page" hidden>
+        <section class="about-intro">
+          <p class="eyebrow"><span class="tiny-cross" aria-hidden="true"></span>О студии</p>
+          <div class="about-grid"><div><h1>Мы превращаем жизнь университета в истории, которые хочется пересматривать.</h1><p>ГУТВ объединяет людей, которым близки съёмка, звук, монтаж и прямой эфир. Мы работаем с факультетами и организациями — от первой идеи до готового материала.</p></div><aside class="mission"><span class="pixel plus" aria-hidden="true"></span><p class="eyebrow">Наша задача</p><p>Увидеть смысл события и передать его точно — живо, бережно и профессионально.</p></aside></div>
+        </section>
+        <section class="content-section team-section" aria-labelledby="team-title">
+          <div class="section-heading"><div><p class="eyebrow">Команда / управление</p><h2 id="team-title">Руководящий состав</h2></div><div class="carousel-controls"><button type="button" data-scroll="team-list" data-step="-1" aria-label="Предыдущая позиция">←</button><button type="button" data-scroll="team-list" data-step="1" aria-label="Следующая позиция">→</button></div></div>
+          <div id="team-list" class="team-list horizontal-list" tabindex="0" aria-label="Руководящий состав ГУТВ"></div>
+        </section>
+        <section class="content-section" aria-labelledby="projects-title">
+          <div class="section-heading"><div><p class="eyebrow">Избранное / проекты</p><h2 id="projects-title">Наши проекты</h2></div><p class="section-description">Собственные форматы ГУТВ и истории, которые продолжаются за пределами одного события.</p><div class="carousel-controls"><button type="button" data-scroll="project-list" data-step="-1" aria-label="Предыдущие проекты">←</button><button type="button" data-scroll="project-list" data-step="1" aria-label="Следующие проекты">→</button></div></div>
+          <div id="project-list" class="project-list horizontal-list" tabindex="0" aria-label="Проекты ГУТВ"></div>
+        </section>
+        <section class="content-section latest-section" aria-labelledby="latest-title">
+          <div class="section-heading"><div><p class="eyebrow">Материалы ГУТВ</p><h2 id="latest-title">Последние проекты</h2></div><span class="source-label">Публикации VK <span aria-hidden="true">↗</span></span></div>
+          <div id="latest-list" class="latest-list horizontal-list" tabindex="0" aria-label="Последние проекты ГУТВ"></div>
+          <div class="section-bottom"><p>Видео и истории из официального сообщества ГУТВ.</p><a class="text-link" href="https://vk.ru/gutv_official" target="_blank" rel="noreferrer">Все материалы в VK ↗</a></div>
+        </section>
+        <section class="request-panel"><div><p class="eyebrow">Снять вместе с ГУТВ</p><h2>Расскажите<br>о событии</h2></div><div><p>Факультеты и организации могут оставить заявку на съёмку и следить за её статусом в личном кабинете.</p><button class="button light-button" type="button" data-dialog="request">Оставить заявку <span class="arrow" aria-hidden="true">↗</span></button></div></section>
+      </div>
+
+      <div id="directions" class="page inner-page" hidden>
+        <section class="directions-intro"><p class="eyebrow"><span class="tiny-cross" aria-hidden="true"></span>Направления</p><div class="section-heading"><h1>Что мы делаем<span class="heading-plus" aria-hidden="true">+</span></h1><p class="section-description">Выберите задачу — детали и состав команды уточним после заявки.</p></div>
+          <div class="direction-grid">
+            <article><span class="direction-symbol" aria-hidden="true">↗</span><h2>Репортажи</h2><p>Сохраняем главное в событиях университета — от идеи до готового материала.</p></article>
+            <article><span class="direction-symbol" aria-hidden="true">▣</span><h2>Фото и видео</h2><p>Снимаем мероприятия, истории людей и всё, чем живёт университет.</p></article>
+            <article><span class="direction-symbol" aria-hidden="true">✚</span><h2>Прямой эфир</h2><p>Помогаем провести трансляцию и собрать техническую команду на площадке.</p></article>
+          </div>
+        </section>
+        <section class="team-roles content-section"><div><p class="eyebrow">Состав команды</p><h2>Специалисты<br>под задачу</h2><p>В заявке расскажите о мероприятии: дату, место, формат и ожидаемый результат. Команда ГУТВ сама подберёт специалистов под задачу.</p></div><ul><li>Режиссура</li><li>Операторская работа</li><li>Монтаж</li><li>Фотография</li><li>Репортаж</li><li>Прямые эфиры</li></ul></section>
+        <section class="request-panel"><div><p class="eyebrow">Снять вместе с ГУТВ</p><h2>Есть задача<span>?</span></h2></div><div><p>Расскажите о мероприятии — дата, место, суть события и ожидаемый результат сохранятся в личном кабинете. Специалистов и технику подберёт ГУТВ.</p><button class="button light-button" type="button" data-dialog="request">Оставить заявку <span class="arrow" aria-hidden="true">↗</span></button></div></section>
+      </div>
+    </main>
+    <footer id="footer" class="footer" hidden><div><a class="footer-logo" href="#home"><span class="brand-mark"><img src="assets/logo-original.webp" alt="ГУТВ"></span></a><p>Университет. Люди. События.<br>В кадре — настоящее.</p></div><nav aria-label="Ссылки в подвале"><a href="#home">Главная</a><a href="#studio">О студии</a><a href="#studio/latest">Последние проекты</a><a href="#directions">Направления</a><button type="button" data-dialog="request">Оставить заявку</button></nav><div class="socials"><a href="https://t.me/gutv_official" target="_blank" rel="noreferrer">Telegram ↗</a><a href="https://vk.ru/gutv_official" target="_blank" rel="noreferrer">VK ↗</a><small>© 2026 ГУТВ</small></div></footer>
+  </div>
+
+  <dialog id="auth-dialog" class="auth-dialog" aria-labelledby="dialog-title">
+    <button class="close-dialog" type="button" aria-label="Закрыть">×</button>
+    <div class="dialog-brand"><span class="brand-mark"><img src="assets/logo-original.webp" alt="ГУТВ"></span><span>Единый вход<br>ГУТВ</span></div>
+    <div id="login-content"><p class="eyebrow">Личный кабинет</p><h2 id="dialog-title">Вход</h2><p id="login-description">Введите логин и пароль вашей учётной записи.</p><form class="preview-form"><label>Логин<input name="username" autocomplete="off" placeholder="Ваш логин" required></label><label>Пароль<input name="password" type="password" autocomplete="off" placeholder="Ваш пароль" required></label><button class="button primary" type="submit">Войти <span class="arrow">↗</span></button></form><p class="switch-form">Нет аккаунта? <button type="button" data-dialog="register">Зарегистрироваться</button></p></div>
+    <div id="register-content" hidden><p class="eyebrow">Новый аккаунт</p><h2 id="register-title">Регистрация</h2><p>Один общий кабинет для факультета или организации.</p><form class="preview-form register-form"><label>Тип подразделения<select name="organizationType"><option>Факультет</option><option>Организация</option></select></label><label>Название<input name="organizationName" placeholder="Название подразделения" required></label><label>Контактное лицо<input name="representativeName" placeholder="Имя и фамилия" required></label><label>Телефон или Telegram<input name="contact" placeholder="+7… или @username" required></label><label>Логин<input name="username" autocomplete="off" placeholder="Придумайте логин" required></label><label>Пароль<input name="password" type="password" autocomplete="off" placeholder="Не менее 8 символов" minlength="8" required></label><button class="button primary" type="submit">Отправить регистрацию <span class="arrow">↗</span></button></form><p class="switch-form">Уже есть аккаунт? <button type="button" data-dialog="login">Войти</button></p></div>
+    <p class="preview-note" role="status">Макет: данные не отправляются.</p>
+  </dialog>
+</body>
+</html>

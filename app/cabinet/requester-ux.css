@@ -1,0 +1,24 @@
+/* Requester forms and dialogs share the portal's theme and form controls. */
+html[data-theme][data-theme] .requester-edit-form { min-width:0; }
+html[data-theme][data-theme] .requester-edit-form fieldset { min-width:0;margin:0 0 24px;padding:20px 0 0;border:0;border-top:1px solid var(--ds-border); }
+html[data-theme][data-theme] .requester-edit-form fieldset legend { padding:0 10px 0 0;color:var(--ds-ink);font:600 18px/1.4 var(--ds-font);letter-spacing:0;text-transform:none; }
+html[data-theme][data-theme] .requester-edit-form .portal-form-grid { margin-top:20px; }
+html[data-theme][data-theme] .requester-edit-form .filming-slot .portal-form-grid { margin-top:0; }
+html[data-theme][data-theme] .requester-draft-note { margin:0 0 24px;padding:12px 14px;border:1px solid var(--ds-border);border-radius:8px;background:var(--ds-soft);color:var(--ds-muted);font:400 13px/1.6 var(--ds-font); }
+html[data-theme][data-theme] .requester-edit-form .portal-alert { display:block;line-height:1.6;overflow-wrap:anywhere; }
+html[data-theme][data-theme] .requester-edit-form .portal-alert:not(.error) { background:var(--ds-accent-soft);border-color:var(--ds-border);color:var(--ds-ink); }
+html[data-theme][data-theme] .requester-detail .requester-edit-form { clear:both;padding-top:18px; }
+html[data-theme][data-theme] .requester-back { padding:10px 0;min-height:44px;border:0;background:transparent;color:var(--ds-link);font:500 14px/1.5 var(--ds-font);text-align:left; }
+html[data-theme][data-theme] .requester-clarification-action { padding:16px;margin:20px 0;border:1px solid var(--ds-border);border-radius:10px;background:var(--ds-accent-soft); }
+html[data-theme][data-theme] .requester-clarification-action p { margin:0 0 12px;line-height:1.6;overflow-wrap:anywhere; }
+html[data-theme][data-theme] .requester-detail > .portal-drawer-close { position:sticky;top:0;float:right;right:auto;z-index:8;width:44px;height:44px;margin:0 0 0 12px;background:var(--ds-card);border:1px solid var(--ds-border); }
+html[data-theme][data-theme] .requester-detail .requester-dialog-message { position:sticky;top:0;padding-right:64px;z-index:7;display:block;clear:both;line-height:1.6;overflow-wrap:anywhere; }
+html[data-theme][data-theme] .requester-form-feedback { margin-top:20px; }
+html[data-theme][data-theme] .requester-edit-form .requester-submit { gap:16px; }
+html[data-theme][data-theme] .requester-detail .portal-review label { color:var(--ds-muted);font:500 14px/1.5 var(--ds-font); }
+html[data-theme][data-theme] .requester-detail .portal-review button[role=radio]:focus-visible { outline:2px solid var(--ds-link);outline-offset:2px;border-radius:6px; }
+@media(max-width:760px) {
+ html[data-theme][data-theme] .requester-edit-form .requester-submit { flex-direction:column;align-items:stretch; }
+ html[data-theme][data-theme] .requester-clarification-action .portal-submit { width:100%;white-space:normal;line-height:1.5; }
+ html[data-theme][data-theme] .requester-detail .portal-detail-head h2 { font-size:24px; }
+}

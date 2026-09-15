@@ -1,0 +1,567 @@
+/* Management workspace: operational UI tokens and scoped overrides. */
+.management-app {
+  --mg-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mg-bg: #0e1420;
+  --mg-panel: #151f2f;
+  --mg-ink: #eef3fb;
+  --mg-muted: #a0afc4;
+  --mg-line: #2a394e;
+  --mg-accent: #7aa7ff;
+  --mg-soft: #1b2a42;
+  --mg-danger: #ef8798;
+  --mg-success: #69c5a2;
+  --mg-on-accent: #0e1420;
+  --mg-shadow: 0 16px 42px rgba(0, 0, 0, .16);
+  min-height: 100dvh;
+  background: var(--mg-bg);
+  color: var(--mg-ink);
+  font-family: var(--mg-font);
+}
+
+html[data-theme="light"] .management-app {
+  --mg-bg: #f4f6f9;
+  --mg-panel: #fff;
+  --mg-ink: #17243a;
+  --mg-muted: #67758a;
+  --mg-line: #e2e7ef;
+  --mg-accent: #2469dc;
+  --mg-soft: #edf3ff;
+  --mg-danger: #c84e62;
+  --mg-success: #218760;
+  --mg-on-accent: #fff;
+  --mg-shadow: 0 12px 32px rgba(23, 36, 58, .06);
+}
+
+.management-app,
+.management-app * { box-sizing: border-box; }
+.management-app::before,
+.management-app::after,
+.management-app .portal-workspace::before,
+.management-app .portal-workspace::after { display: none !important; }
+.management-app .portal-panel::before,
+.management-app .portal-panel::after,
+.management-app .portal-kpis article::before,
+.management-app .portal-kpis article::after { display: none !important; }
+.management-app :is(h1, h2, h3, h4, p) { text-shadow: none; }
+.management-app :is(h1, h2, h3, h4) { color: var(--mg-ink); font-family: inherit; font-style: normal; text-transform: none; }
+.management-app button,
+.management-app input,
+.management-app select,
+.management-app textarea { font-family: inherit; }
+
+/* Shell */
+html .management-app .portal-sidebar {
+  width: 224px;
+  flex: 0 0 224px;
+  min-height: 100dvh;
+  padding: 22px 14px 18px;
+  border: 0;
+  border-right: 1px solid var(--mg-line);
+  background: var(--mg-panel);
+  box-shadow: none;
+}
+.management-app .portal-brand {
+  align-items: center;
+  gap: 10px;
+  margin: 0 8px 28px;
+  color: var(--mg-ink);
+  text-decoration: none;
+}
+.management-app .portal-brand > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-basis: 40px;
+  overflow: hidden;
+  border: 1px solid var(--mg-line);
+  border-radius: 10px;
+  background: var(--mg-soft);
+  box-shadow: none;
+}
+.management-app .portal-brand img { width: 30px; height: 30px; border-radius: 7px; }
+.management-app .portal-brand p { display: grid; gap: 3px; margin: 0; color: var(--mg-ink); letter-spacing: -.01em; }
+.management-app .portal-brand p b { font: 700 13px/1.12 var(--mg-font); }
+.management-app .portal-brand p small { color: var(--mg-muted); font: 500 10px/1.2 var(--mg-font); letter-spacing: .01em; }
+.management-app .portal-sidebar nav { display: grid; gap: 4px; }
+.management-app .portal-sidebar nav button,
+.management-app .portal-sidebar nav a {
+  position: relative;
+  display: grid;
+  min-height: 44px;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--mg-muted);
+  text-align: left;
+  text-decoration: none;
+  transition: background .16s ease, color .16s ease;
+}
+.management-app .portal-sidebar nav button:hover,
+.management-app .portal-sidebar nav a:hover { background: color-mix(in srgb, var(--mg-soft) 72%, transparent); color: var(--mg-ink); }
+.management-app .portal-sidebar nav button.active,
+.management-app .portal-sidebar nav a.active { background: var(--mg-soft); color: var(--mg-accent); box-shadow: none; }
+.management-app .management-nav-icon,
+.management-app .portal-sidebar nav button > span:first-child,
+.management-app .portal-sidebar nav a > span:first-child {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  color: currentColor;
+  font: 600 9px/1 var(--mg-font);
+}
+.management-app .management-nav-icon svg { width: 20px; height: 20px; stroke: currentColor; }
+.management-app .portal-sidebar nav b { overflow: hidden; color: currentColor; font: 600 13px/1.35 var(--mg-font); letter-spacing: 0; text-overflow: ellipsis; text-transform: none; white-space: normal; }
+.management-app .portal-sidebar nav i {
+  position: static;
+  display: grid;
+  min-width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 0;
+  border-radius: 99px;
+  background: var(--mg-accent);
+  color: var(--mg-on-accent);
+  font: 700 10px/1 var(--mg-font);
+}
+.management-app :focus-visible { outline: 2px solid var(--mg-accent); outline-offset: 2px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--mg-accent) 18%, transparent); }
+.management-app .management-nav-caption { margin: 18px 10px 8px; color: var(--mg-muted); font: 600 10px/1.2 var(--mg-font); letter-spacing: .07em; text-transform: uppercase; }
+.management-app .portal-sidebar-meta {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 9px;
+  margin: auto 8px 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--mg-line);
+}
+.management-app .portal-sidebar-meta > div { display: grid; gap: 2px; }
+.management-app .portal-sidebar-meta :is(span, p, small) { margin: 0; color: var(--mg-muted); font: 500 10px/1.45 var(--mg-font); letter-spacing: .04em; text-transform: uppercase; }
+.management-app .portal-sidebar-meta b { overflow: hidden; color: var(--mg-ink); font: 600 11px/1.25 var(--mg-font); text-overflow: ellipsis; white-space: nowrap; }
+.management-app .management-account-avatar { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--mg-line); border-radius: 8px; background: var(--mg-soft); color: var(--mg-accent); font: 700 9px/1 var(--mg-font); letter-spacing: 0; }
+.management-app .portal-sidebar-meta i { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--mg-success); box-shadow: none; }
+
+html .management-app .portal-workspace { width: calc(100% - 224px); min-height: 100dvh; background: var(--mg-bg); }
+html .management-app .portal-topbar {
+  min-height: 88px;
+  padding: 16px 32px;
+  border: 0;
+  border-bottom: 1px solid var(--mg-line);
+  background: color-mix(in srgb, var(--mg-bg) 94%, transparent);
+  box-shadow: none;
+}
+.management-app .portal-page-title > span { color: var(--mg-muted); font: 600 10px/1.2 var(--mg-font); letter-spacing: .08em; text-transform: uppercase; }
+.management-app .portal-page-title h1 { margin: 5px 0 0; font: 700 clamp(26px, 2.2vw, 32px)/1.08 var(--mg-font); font-style: normal; letter-spacing: -.035em; text-transform: none; transform: none; }
+.management-app .portal-top-actions { gap: 10px; }
+.management-app .portal-top-actions [data-theme-switcher],
+.management-app .portal-top-actions .theme-switcher { border-color: var(--mg-line); border-radius: 8px; background: var(--mg-panel); box-shadow: none; }
+.management-app .portal-user { padding-right: 6px; }
+.management-app .portal-user small { color: var(--mg-muted); font: 600 9px/1 var(--mg-font); letter-spacing: .07em; }
+.management-app .portal-user b { color: var(--mg-ink); font: 600 12px/1.2 var(--mg-font); letter-spacing: 0; text-transform: none; }
+.management-app .management-site-link,
+.management-app .portal-logout,
+.management-app .portal-primary {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+  font: 600 12px/1 var(--mg-font);
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: none;
+  box-shadow: none;
+}
+.management-app .management-site-link:hover,
+.management-app .portal-logout:hover { border-color: var(--mg-accent); color: var(--mg-accent); }
+.management-app .portal-primary { border-color: var(--mg-accent); background: var(--mg-accent); color: var(--mg-on-accent); }
+
+html .management-app .portal-main { width: min(100%, 1440px); margin: 0 auto; padding: 32px; background: transparent; }
+.management-app .portal-view { display: grid; gap: 24px; animation: none; transform: none; }
+
+/* Summary and panels */
+.management-app .portal-kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.management-app .portal-kpis article,
+.management-app .portal-kpis article.primary {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid var(--mg-line);
+  border-radius: 12px;
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+  box-shadow: none;
+}
+.management-app .portal-kpis article.primary { grid-column: auto; }
+html[data-theme="light"] .management-app .portal-kpis article.primary {
+  border-color: var(--mg-line);
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+}
+html[data-theme="light"] .management-app .portal-kpis article.primary strong { color: var(--mg-ink); }
+html[data-theme="light"] .management-app .portal-kpis article.primary :is(span, p, small) { color: var(--mg-muted); }
+html[data-theme="light"] .management-app .portal-kpis article.primary button { color: var(--mg-accent); }
+.management-app .portal-kpis :is(span, small, p) { color: var(--mg-muted); font: 500 12px/1.4 var(--mg-font); }
+.management-app .portal-kpis strong,
+.management-app .portal-kpis article:not(.primary) strong { margin: 16px 0 10px; color: var(--mg-ink); font: 700 36px/1 var(--mg-font); letter-spacing: -.045em; }
+.management-app .portal-kpis p { margin: 6px 0 0; }
+.management-app .portal-kpis button { margin-top: auto; padding: 0; border: 0; background: transparent; color: var(--mg-accent); font: 600 12px/1 var(--mg-font); text-transform: none; }
+.management-app .portal-dashboard-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 14px; }
+.management-app .portal-panel,
+.management-app .portal-form-panel {
+  padding: 24px;
+  border: 1px solid var(--mg-line);
+  border-radius: 12px;
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+  box-shadow: var(--mg-shadow);
+}
+.management-app .portal-panel-head { min-height: 34px; margin-bottom: 16px; padding: 0; border: 0; }
+.management-app .portal-panel-head > div > span,
+.management-app .portal-panel-head > small { color: var(--mg-muted); font: 600 10px/1.2 var(--mg-font); letter-spacing: .07em; text-transform: uppercase; }
+.management-app .portal-panel-head h2 { margin: 4px 0 0; font: 700 22px/1.15 var(--mg-font); letter-spacing: -.025em; }
+.management-app .portal-panel-head > button { padding: 0; border: 0; background: transparent; color: var(--mg-accent); font: 600 12px/1 var(--mg-font); text-transform: none; }
+
+/* Operational lists and tables */
+.management-app .portal-event-list,
+.management-app .management-registration-list,
+.management-app .management-org-list,
+.management-app .management-specialty-list { margin-inline: 0; border-color: var(--mg-line); }
+.management-app .portal-event-list > button,
+.management-app .management-registration-list > div,
+.management-app .management-org-list article,
+.management-app .management-specialty-list > div {
+  border-color: var(--mg-line);
+  background: transparent;
+}
+.management-app .portal-event-list > button:hover,
+.management-app .management-org-list article:hover { background: var(--mg-soft); }
+.management-app .portal-event-list strong,
+.management-app .management-registration-list b,
+.management-app .management-org-list h3,
+.management-app .management-specialty-list > div > b { color: var(--mg-ink); font-family: inherit; letter-spacing: -.01em; text-transform: none; }
+.management-app .portal-event-list small,
+.management-app .management-registration-list small,
+.management-app .management-org-list p,
+.management-app .management-org-list article > div:nth-child(2) > small,
+.management-app .management-specialty-list > div > small { color: var(--mg-muted); }
+.management-app .portal-event-list time { border-color: var(--mg-line); background: var(--mg-soft); color: var(--mg-accent); }
+.management-app .portal-event-list em,
+.management-app .portal-status,
+.management-app .management-org-list em { border-radius: 99px; font: 600 10px/1 var(--mg-font); letter-spacing: .02em; text-transform: none; }
+html[data-theme="light"] .management-app :is(.status-review, .status-approved) { border-color: #b8cdf1 !important; background: #edf3ff !important; color: #2456a5 !important; }
+html[data-theme="light"] .management-app :is(.status-clarification, .org-pending) { border-color: #f0dba7 !important; background: #fff5df !important; color: #91651b !important; }
+html[data-theme="light"] .management-app :is(.status-completed, .org-active) { border-color: #bee1cd !important; background: #eaf6ef !important; color: #247352 !important; }
+html[data-theme="light"] .management-app .status-in_progress { border-color: #d2c4eb !important; background: #f0ebfa !important; color: #7351a8 !important; }
+html[data-theme="light"] .management-app :is(.status-rejected, .status-cancelled, .org-rejected, .org-blocked) { border-color: #edc8cf !important; background: #fceff2 !important; color: #a14151 !important; }
+.management-app .portal-history-tools { padding: 0 0 18px; border-bottom: 1px solid var(--mg-line); background: transparent; }
+.management-app .management-list-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.management-app .management-list-tabs button {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-bg);
+  color: var(--mg-ink);
+  font: 600 12px/1 var(--mg-font);
+}
+.management-app .management-list-tabs button[aria-pressed="true"] {
+  border-color: var(--mg-accent);
+  background: var(--mg-accent);
+  color: var(--mg-on-accent);
+}
+.management-app .management-list-tabs small { margin-left: 5px; color: inherit; opacity: .8; }
+.management-app .portal-search,
+.management-app .portal-history-tools > select {
+  min-height: 40px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-bg);
+  color: var(--mg-ink);
+  box-shadow: none;
+}
+.management-app .portal-search input { color: var(--mg-ink); background: transparent; }
+.management-app .portal-table-wrap { margin: 18px 0 0; border: 1px solid var(--mg-line); border-radius: 10px; background: var(--mg-panel); }
+.management-app .portal-table-wrap :is(th, td) { border-color: var(--mg-line); }
+.management-app .portal-table-wrap th { background: var(--mg-soft); color: var(--mg-muted); font: 600 10px/1.2 var(--mg-font); letter-spacing: .06em; text-transform: uppercase; }
+.management-app .portal-table-wrap td { color: var(--mg-ink); background: transparent; }
+.management-app .portal-table-wrap td :is(b, code) { color: var(--mg-ink); font-family: inherit; }
+.management-app .portal-table-wrap td small { color: var(--mg-muted); }
+.management-app .portal-table-wrap tbody tr:hover td { background: var(--mg-soft); }
+.management-app .portal-table-wrap td:last-child > button { border: 0; border-radius: 7px; background: var(--mg-soft); color: var(--mg-accent); }
+
+/* Management controls */
+.management-app .management-registration-list > div,
+.management-app .management-specialty-list > div { padding-inline: 0; }
+.management-app .management-org-list { margin-top: 12px; }
+.management-app .management-org-list article { grid-template-columns: minmax(0, 1fr) minmax(140px, .35fr) auto; padding: 18px 0; }
+.management-app .management-org-list article:hover { padding-inline: 0; }
+.management-app :is(.management-registration-list button, .management-approve, .management-reject, .management-open, .management-specialty-list button, .management-add-specialty button) {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+  font: 600 12px/1 var(--mg-font);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.management-app :is(.management-registration-list button:first-of-type, .management-approve) { border-color: color-mix(in srgb, var(--mg-success) 45%, var(--mg-line)); background: color-mix(in srgb, var(--mg-success) 12%, var(--mg-panel)); color: var(--mg-success); }
+.management-app .management-reject { border-color: color-mix(in srgb, var(--mg-danger) 45%, var(--mg-line)); color: var(--mg-danger); }
+.management-app .management-registration-list > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.management-app .management-registration-list > div > span { grid-column: 1 / -1; }
+.management-app .management-registration-list > div > button:last-child { grid-column: auto; }
+.management-app .management-org-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.management-app .management-org-actions .management-approve { display: inline-flex; align-items: center; }
+.management-app .management-org-actions .management-open { width: auto; }
+.management-app .organization-form label > small { color: var(--mg-muted); font-size: 12px; line-height: 1.5; }
+.management-app .management-add-specialty {
+  margin: 18px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.management-app .management-add-specialty button { min-height: 40px; border-color: var(--mg-accent); background: var(--mg-accent); color: var(--mg-on-accent); }
+
+/* Forms, drawers and feedback */
+.management-app :is(.portal-form-grid, .organization-form) label > span,
+.management-app .management-assignment-list label > span { color: var(--mg-muted); font: 600 10px/1.2 var(--mg-font); letter-spacing: .04em; text-transform: none; }
+.management-app :is(.portal-form-grid input, .portal-form-grid select, .portal-form-grid textarea, .management-add-specialty input, .organization-form input, .organization-form select, .organization-form textarea, .management-assignment-list input) {
+  min-height: 40px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-bg);
+  color: var(--mg-ink);
+  box-shadow: none;
+}
+.management-app :is(.portal-form-grid textarea, .organization-form textarea) { min-height: 96px; resize: vertical; }
+.management-app :is(.portal-form-grid input, .portal-form-grid select, .portal-form-grid textarea, .management-add-specialty input, .organization-form input, .organization-form select, .organization-form textarea, .management-assignment-list input):focus { border-color: var(--mg-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--mg-accent) 16%, transparent); }
+.management-app .management-assignment-list,
+.management-app .organization-info { border: 1px solid var(--mg-line); background: var(--mg-line); }
+.management-app .management-assignment-list > div,
+.management-app .organization-info > span { border-color: var(--mg-line); background: var(--mg-bg); }
+.management-app .management-assignment-list > div > b,
+.management-app .organization-info b { color: var(--mg-ink); font-family: inherit; text-transform: none; }
+.management-app .organization-info small { color: var(--mg-muted); }
+.management-app .portal-alert { border: 1px solid var(--mg-line); border-radius: 10px; background: var(--mg-panel); box-shadow: none; }
+.management-app .portal-alert.error { border-color: color-mix(in srgb, var(--mg-danger) 50%, var(--mg-line)); color: var(--mg-danger); }
+.management-app .portal-alert.success { border-color: color-mix(in srgb, var(--mg-success) 50%, var(--mg-line)); color: var(--mg-success); }
+.management-app .portal-alert button { color: currentColor; }
+.management-app .portal-loading,
+.management-app .portal-empty { border: 1px dashed var(--mg-line); border-radius: 12px; background: transparent; color: var(--mg-muted); }
+.management-app .portal-empty :is(h3, p) { color: var(--mg-muted); font-family: inherit; text-transform: none; }
+.management-app .portal-drawer-backdrop { background: rgba(10, 16, 28, .45); backdrop-filter: blur(5px); }
+.management-app .portal-drawer {
+  border: 1px solid var(--mg-line);
+  border-radius: 12px;
+  background: var(--mg-panel);
+  color: var(--mg-ink);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
+}
+.management-app .portal-drawer-close { border-color: var(--mg-line); border-radius: 8px; background: var(--mg-soft); color: var(--mg-ink); }
+.management-app .portal-detail-head { border-color: var(--mg-line); }
+.management-app .portal-detail-head > div > span,
+.management-app .portal-detail-grid article > span,
+.management-app .portal-timeline span small { color: var(--mg-muted); }
+.management-app .portal-detail-head h2,
+.management-app .portal-detail-grid article > b,
+.management-app .portal-timeline span b { color: var(--mg-ink); font-family: inherit; text-transform: none; }
+.management-app .portal-detail-head h2 { margin: 5px 0 0; font-size: 28px; line-height: 1.12; letter-spacing: -.03em; }
+.management-app .management-request-form fieldset > legend { color: var(--mg-ink); font: 700 16px/1.2 var(--mg-font); letter-spacing: -.015em; text-transform: none; }
+.management-app :is(.management-request-form, .organization-form, .management-add-specialty) { font-size: 14px; line-height: 1.45; }
+.management-app .portal-detail-grid { border-color: var(--mg-line); background: var(--mg-line); }
+.management-app .portal-detail-grid article { background: var(--mg-bg); }
+.management-app .portal-detail-grid article > p { color: var(--mg-muted); }
+.management-app .portal-files a,
+.management-app .portal-detail-tags b { border-color: var(--mg-line); border-radius: 8px; background: var(--mg-soft); color: var(--mg-ink); }
+.management-app .portal-review,
+.management-app .management-review { border-color: var(--mg-line); border-radius: 10px; background: var(--mg-bg); }
+.management-app .portal-review h3 { color: var(--mg-ink); font-family: inherit; text-transform: none; }
+.management-app .portal-stars button { color: var(--mg-line); text-shadow: none; }
+.management-app .portal-stars button.active { color: var(--mg-accent); text-shadow: none; }
+.management-app .portal-submit { border-radius: 8px; background: var(--mg-accent); color: var(--mg-on-accent); font-family: inherit; text-transform: none; box-shadow: none; }
+
+@media (max-width: 1120px) {
+  html .management-app .portal-sidebar { width: 200px; flex-basis: 200px; }
+  html .management-app .portal-workspace { width: calc(100% - 200px); }
+  .management-app .portal-brand p,
+  .management-app .portal-sidebar nav b { display: block; }
+  .management-app .portal-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .management-app { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+  html .management-app .portal-workspace { width: 100%; }
+  html .management-app .portal-sidebar {
+    position: fixed;
+    z-index: 80;
+    inset: auto 0 0;
+    display: block;
+    width: 100%;
+    height: calc(70px + env(safe-area-inset-bottom));
+    min-height: 0;
+    padding: 6px 8px env(safe-area-inset-bottom);
+    border: 0;
+    border-top: 1px solid var(--mg-line);
+    background: var(--mg-panel);
+    box-shadow: 0 -8px 24px rgba(10, 16, 28, .12);
+  }
+  .management-app .portal-brand,
+  .management-app .portal-sidebar-meta,
+  .management-app .management-nav-caption { display: none; }
+  .management-app .portal-sidebar nav { display: grid; height: 58px; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; }
+  .management-app .portal-sidebar nav button,
+  .management-app .portal-sidebar nav a { min-height: 56px; grid-template-columns: 1fr; place-content: center; gap: 4px; padding: 4px 1px; text-align: center; }
+  .management-app .management-nav-icon,
+  .management-app .portal-sidebar nav button > span:first-child,
+  .management-app .portal-sidebar nav a > span:first-child { justify-self: center; }
+  .management-app .portal-sidebar nav b { max-width: 100%; font-size: 10px; }
+  .management-app .portal-sidebar nav :is(button[data-short-label] b, b[data-short-label]) { font-size: 0; }
+  .management-app .portal-sidebar nav :is(button[data-short-label] b, b[data-short-label])::after { font-size: 10px; }
+  .management-app .portal-sidebar nav button[data-short-label="Обзор"] b::after { content: 'Обзор'; }
+  .management-app .portal-sidebar nav button[data-short-label="Заявки"] b::after { content: 'Заявки'; }
+  .management-app .portal-sidebar nav button[data-short-label="Организации"] b::after { content: 'Орг.'; }
+  .management-app .portal-sidebar nav button[data-short-label="Команда"] b::after { content: 'Команда'; }
+  .management-app .portal-sidebar nav button[data-short-label="Состав"] b::after { content: 'Состав'; }
+  .management-app .portal-sidebar nav i { position: absolute; top: 3px; right: 8px; }
+  html .management-app .portal-topbar { min-height: 78px; align-items: center; padding: 14px 16px; }
+  .management-app .portal-page-title h1 { font-size: 26px; }
+  .management-app .portal-page-title > span { font-size: 9px; }
+  .management-app .portal-user { display: none; }
+  .management-app .management-site-link { display: none; }
+  .management-app .portal-logout { min-width: 38px; padding: 0 9px; font-size: 0; }
+  html .management-app .portal-main { padding: 18px 12px 28px; }
+  .management-app .portal-view { gap: 14px; }
+  .management-app .portal-kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .management-app .portal-kpis article,
+  .management-app .portal-kpis article.primary { min-height: 124px; padding: 15px; }
+  .management-app .portal-kpis strong,
+  .management-app .portal-kpis article:not(.primary) strong { font-size: 30px; }
+  .management-app .portal-dashboard-grid { grid-template-columns: 1fr; gap: 14px; }
+  .management-app .portal-panel,
+  .management-app .portal-form-panel { padding: 18px 14px; border-radius: 10px; }
+  .management-app .portal-panel-head h2 { font-size: 20px; }
+  .management-app .portal-history-tools { align-items: stretch; flex-direction: column; }
+  .management-app .portal-history-tools > select { width: 100%; }
+  .management-app .management-org-list article { grid-template-columns: 1fr; gap: 12px; }
+  .management-app .management-org-list article > div:nth-child(2) { justify-self: start; }
+  .management-app .management-org-actions { justify-content: flex-start; }
+  .management-app .management-add-specialty { grid-template-columns: 1fr; }
+  .management-app .management-add-specialty button { width: 100%; }
+  .management-app .management-assignment-list > div { grid-template-columns: 1fr 1fr; }
+  .management-app .management-assignment-list > div > b,
+  .management-app .management-assignment-list .names { grid-column: 1 / -1; }
+  .management-app .portal-drawer-backdrop { align-items: end; }
+  .management-app .portal-drawer { width: 100%; max-height: 94dvh; border-width: 1px 0 0; border-radius: 16px 16px 0 0; }
+}
+
+@media (max-width: 390px) {
+  .management-app .portal-kpis { grid-template-columns: 1fr; }
+  .management-app .portal-sidebar nav b { font-size: 9px; }
+}
+
+/* Drawers must cover the shell as well as the content. */
+html .management-app .portal-workspace { z-index: auto; }
+html .management-app .portal-brand p { display: grid; text-transform: none; }
+html .management-app .management-site-link { white-space: nowrap; }
+@media (max-width: 700px) {
+  html .management-app .portal-sidebar nav b[data-short-label] { font-size: 0; }
+  html .management-app .portal-sidebar nav b[data-short-label]::after { content: attr(data-short-label); font-size: 10px; }
+  html .management-app .portal-sidebar nav b[data-short-label="Организации"]::after { content: 'Орг.'; }
+  html .management-app .portal-topbar { flex-wrap: wrap; gap: 12px; }
+  html .management-app .portal-page-title { min-width: 0; flex: 1 1 170px; }
+  html .management-app .portal-top-actions { flex: 0 0 auto; }
+  html .management-app .portal-page-title h1 { font-size: 24px; line-height: 1.16; }
+}
+html .management-app .portal-logout::after { content: none; display: none; }
+
+/* Keep every allowed section reachable on narrow screens. */
+@media (max-width: 767px) {
+  html .management-app .portal-sidebar nav { display: flex; overflow-x: auto; overscroll-behavior-x: contain; }
+  html .management-app .portal-sidebar nav button { flex: 1 0 62px; }
+}
+
+@media (max-width: 767px) {
+  html .management-app .management-cabinet-link { display: inline-flex; font-size: 12px; padding-inline: 9px; }
+}
+
+
+/* Keep the decision and the available actions easy to reach while editing. */
+html[data-theme][data-theme] .management-app .management-request-form .management-decision {
+  margin: 14px 0 12px;
+  padding: 12px 16px 16px;
+}
+html[data-theme][data-theme] .management-app .management-decision .portal-form-grid {
+  margin-top: 12px;
+  gap: 12px 16px;
+}
+html[data-theme][data-theme] .management-app .management-decision textarea {
+  min-height: 70px;
+}
+.management-app .portal-drawer:is(.management-drawer, .organization-drawer) {
+  padding-bottom: 0;
+}
+.management-app .organization-drawer {
+  height: fit-content;
+  max-height: 100dvh;
+}
+html[data-theme][data-theme] .management-app .management-drawer-actions {
+  position: sticky;
+  z-index: 4;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 20px -34px 0;
+  padding: 16px 34px;
+  border-top: 1px solid var(--mg-line);
+  background: var(--mg-panel);
+  box-shadow: 0 -6px 16px rgb(0 0 0 / 6%);
+}
+html[data-theme][data-theme] .management-app .management-drawer-actions .portal-submit {
+  min-height: 46px;
+  margin: 0;
+}
+html[data-theme][data-theme] .management-app .management-drawer-cancel,
+html[data-theme][data-theme] .management-app .management-conflict-actions button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--mg-line);
+  border-radius: 8px;
+  background: var(--mg-soft);
+  color: var(--mg-ink);
+  font: 600 14px/1.35 var(--mg-font);
+}
+.management-app .management-conflict-actions p { margin: 8px 0 12px; }
+.management-app .portal-drawer :is(button:disabled, input:disabled, select:disabled) { cursor: wait; }
+.management-app .management-drawer { scroll-padding-bottom: 110px; }
+@media (max-width: 700px) {
+  html[data-theme][data-theme] .management-app .management-request-form .management-decision { padding: 10px 12px 14px; }
+  html[data-theme][data-theme] .management-app .management-drawer-actions {
+    bottom: 0;
+    margin-inline: -14px;
+    margin-bottom: 0;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  html[data-theme][data-theme] .management-app .management-drawer-actions .portal-submit { flex: 1; padding-inline: 12px; font-size: 14px; }
+  html[data-theme][data-theme] .management-app .management-drawer-cancel { padding-inline: 12px; }
+}

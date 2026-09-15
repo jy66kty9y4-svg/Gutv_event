@@ -1,0 +1,86 @@
+.hero {
+  width: min(100%, 1180px);
+  margin-inline: auto;
+  padding: 52px 32px 0;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 36px;
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--ds-muted);
+  font: 400 13px/1.5 var(--ds-font);
+  letter-spacing: .01em;
+}
+
+.requestButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  min-height: 76px;
+  max-width: 100%;
+  padding: 20px 30px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--ds-primary);
+  color: #fff;
+  font: 650 clamp(20px, 2.6vw, 30px)/1.2 var(--ds-font);
+  letter-spacing: -.025em;
+  cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.requestButton svg { flex-shrink: 0; }
+.requestButton:hover { background: color-mix(in srgb, var(--ds-primary) 86%, #11113b); transform: translateY(-2px); }
+.requestButton:active { transform: translateY(0); }
+
+.description {
+  margin: 20px 0 0;
+  color: var(--ds-ink);
+  font: 400 clamp(23px, 2.6vw, 32px)/1.3 var(--ds-font);
+  letter-spacing: -.025em;
+}
+
+.projectsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 17px;
+  color: var(--ds-muted);
+  font: 400 13px/1.5 var(--ds-font);
+  text-decoration: none;
+}
+
+.projectsLink:hover { color: var(--ds-link); }
+.projectsLink span { font-size: 18px; }
+.filming { margin: 0; }
+.photoFrame { aspect-ratio: 1.95; overflow: hidden; border-radius: 16px; background: #302921; }
+.photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+.caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; margin-top: 14px; color: var(--ds-muted); font: 400 12px/1.5 var(--ds-font); }
+.caption span:first-child { color: var(--ds-ink); }
+
+@media (max-width: 640px) {
+  .hero { padding: 40px 20px 0; }
+  .intro { padding-bottom: 32px; }
+  .eyebrow { font-size: 12px; margin-bottom: 20px; }
+  .requestButton { gap: 18px; min-height: 64px; padding: 17px 20px; border-radius: 10px; font-size: clamp(18px, 5.5vw, 23px); }
+  .requestButton svg { width: 23px; height: 23px; }
+  .description { margin-top: 18px; font-size: clamp(22px, 6.1vw, 27px); }
+  .projectsLink { margin-top: 14px; }
+  .photoFrame { aspect-ratio: 1.18; border-radius: 12px; }
+  .photo { object-position: 100% center; }
+  .caption { font-size: 11px; margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .requestButton { transition: none; }
+  .requestButton:hover { transform: none; }
+}

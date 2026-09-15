@@ -1,0 +1,199 @@
+{
+  "source": "https://gutv.tech/studio",
+  "capturedAt": "2026-09-06T00:34:04.960588+00:00",
+  "leadership": [
+    {
+      "name": "Адельшин Джемильхан",
+      "role": "Директор студии \"ГУтв\"",
+      "description": "",
+      "image": "./assets/people/01.webp",
+      "sourceImage": "/api/leadership/photos/1",
+      "photoPosition": "69% 5%",
+      "photoScale": 1.56
+    },
+    {
+      "name": "Малинин Алексей",
+      "role": "Заместитель директора",
+      "description": "",
+      "image": "./assets/people/02.webp",
+      "sourceImage": "/api/leadership/photos/4",
+      "photoPosition": "50% 56%",
+      "photoScale": 1.35
+    },
+    {
+      "name": "Борисов Максим",
+      "role": "Технический директор",
+      "description": "",
+      "image": "./assets/people/03.webp",
+      "sourceImage": "/api/leadership/photos/9",
+      "photoPosition": "62% 78%",
+      "photoScale": 1.26
+    },
+    {
+      "name": "Адельшин Эмир",
+      "role": "Шеф-редактор",
+      "description": "",
+      "image": "./assets/people/04.webp",
+      "sourceImage": "/api/leadership/photos/5",
+      "photoPosition": "100% 29%",
+      "photoScale": 1.26
+    },
+    {
+      "name": "Семенов Семён",
+      "role": "Заместитель по внешним связям",
+      "description": "",
+      "image": "./assets/people/05.webp",
+      "sourceImage": "/media/leadership/semenov-semyon.webp",
+      "photoPosition": "32% 21%",
+      "photoScale": 1.27
+    },
+    {
+      "name": "Харитонов Никита",
+      "role": "Ответственный за видео-контент на концертах",
+      "description": "",
+      "image": "./assets/people/06.webp",
+      "sourceImage": "/media/leadership/kharitonov-nikita.webp",
+      "photoPosition": "center center",
+      "photoScale": 1.0
+    },
+    {
+      "name": "Аредаков Артемий",
+      "role": "Ответственный за набор",
+      "description": "",
+      "image": "./assets/people/07.webp",
+      "sourceImage": "/api/leadership/photos/3",
+      "photoPosition": "0% 38%",
+      "photoScale": 1.32
+    },
+    {
+      "name": "Балакина Ксения",
+      "role": "Ответственная за университетский контент",
+      "description": "",
+      "image": "./assets/people/08.webp",
+      "sourceImage": "/api/leadership/photos/2",
+      "photoPosition": "51% 53%",
+      "photoScale": 1.0
+    }
+  ],
+  "projects": [
+    {
+      "title": "По другую сторону камеры",
+      "eyebrow": "BACKSTAGE",
+      "description": "Подготовка площадки, свет, звук и команда, из которых складывается каждый материал.",
+      "href": "https://vk.ru/gutv_official",
+      "linkLabel": "Смотреть в VK",
+      "image": "./assets/on-set.webp",
+      "tone": "dark"
+    },
+    {
+      "title": "Последняя перебивка",
+      "eyebrow": "PEOPLE · ARCHIVE",
+      "description": "История о выпускниках студии и о том, что остаётся после последнего университетского эфира.",
+      "href": "https://l.vk.ru/wall-30973272_6869",
+      "linkLabel": "Открыть материал",
+      "image": "",
+      "tone": "blue"
+    },
+    {
+      "title": "Авторские работы",
+      "eyebrow": "ORIGINALS · GUTV",
+      "description": "Клипы, короткие фильмы и документальные истории, которые команда придумывает и выпускает сама.",
+      "href": "https://vk.ru/gutv_official",
+      "linkLabel": "Смотреть проекты",
+      "image": "",
+      "tone": "light"
+    }
+  ],
+  "latest": [
+    {
+      "title": "Мало 6.0",
+      "description": "Откуда звук? 🎼 Мне тебя мало — мало-мало-мало вайба в том, что лето неумолимо заканчивается. Но Сгшье 6.0 согреет воспоминаниями, которые запечатлены в клипе \"Мало 6.0\" — надеваем наушники и погружаемся в незабываемую…",
+      "href": "https://vk.ru/wall-30973272_6873",
+      "date": "",
+      "image": "./assets/6873.webp",
+      "imageCrop": {
+        "x": 2,
+        "y": 122,
+        "width": 1102,
+        "height": 621,
+        "sourceWidth": 1104,
+        "sourceHeight": 1070
+      },
+      "imageAlt": "Кадр из клипа «Мало 6.0»",
+      "duration": "3:01",
+      "source": "vk"
+    },
+    {
+      "title": "Александр Катович, 2026",
+      "description": "Каждый кадр Саши Катовича — отдельная вселенная. А все ведь начиналось со старого фотоаппарата. Да что писать, если все это есть в замечательной перебивке? 💥📷",
+      "href": "https://vk.ru/wall-30973272_6869",
+      "date": "",
+      "image": "./assets/6869.webp",
+      "imageCrop": {
+        "x": 0,
+        "y": 129,
+        "width": 1102,
+        "height": 620,
+        "sourceWidth": 1102,
+        "sourceHeight": 914
+      },
+      "imageAlt": "Кадр из перебивки об Александре Катовиче",
+      "duration": "2:21",
+      "source": "vk"
+    },
+    {
+      "title": "Лиза Смирнова",
+      "description": "А как все началось? Этот вопрос задали и Лизе Смирновой. Ответ прост — спонтанно. Но насколько это \"спонтанно\" было удачным! Перебивка не даст соврать 😉",
+      "href": "https://vk.ru/wall-30973272_6866",
+      "date": "",
+      "image": "./assets/6866.webp",
+      "imageCrop": {
+        "x": 0,
+        "y": 144,
+        "width": 1104,
+        "height": 621,
+        "sourceWidth": 1104,
+        "sourceHeight": 932
+      },
+      "imageAlt": "Кадр из перебивки о Лизе Смирновой",
+      "duration": "2:43",
+      "source": "vk"
+    },
+    {
+      "title": "Надежда Федякова",
+      "description": "\"До скорой встречи!\" — именно так хочется сказать Наде Федяковой, ведь мы будем скучать по ней. Она стала действительно незаменимым человеком в нашей команде, о чем и перебивка. Приятного просмотра! 💻",
+      "href": "https://vk.ru/wall-30973272_6862",
+      "date": "30 июля",
+      "image": "./assets/6862.webp",
+      "imageCrop": {
+        "x": 0,
+        "y": 124,
+        "width": 1098,
+        "height": 621,
+        "sourceWidth": 1098,
+        "sourceHeight": 976
+      },
+      "imageAlt": "Кадр из перебивки о Надежде Федяковой",
+      "duration": "2:18",
+      "source": "vk"
+    },
+    {
+      "title": "Дима Петров",
+      "description": "Чуть-чуть стеснительный, но всегда веселый. Таков Дима Петров — слон, оператор и просто замечательный человек. Возьмем вместе с ним камеру и пройдемся по знакомым улицам? 📹",
+      "href": "https://vk.ru/wall-30973272_6855",
+      "date": "30 июля",
+      "image": "./assets/6855.webp",
+      "imageCrop": {
+        "x": 0,
+        "y": 141,
+        "width": 1102,
+        "height": 620,
+        "sourceWidth": 1102,
+        "sourceHeight": 982
+      },
+      "imageAlt": "Кадр из перебивки о Диме Петрове",
+      "duration": "2:53",
+      "source": "vk"
+    }
+  ]
+}
